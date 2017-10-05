@@ -5,6 +5,18 @@
   <title>Quantified Self - Diary</title>
 </head>
 <body>
+  <input type="button" name="Add New Food" value="Add New Food" id='new-food'>
+  <div class="food-form">
+    <form class='new-form'>
+      Name:
+      <input type='text' name='name' class='name'>
+      <br>
+      Calories:
+      <input type='text' name='calories' class='calories'>
+      <br>
+      <input type='submit'>
+    </form>
+  </div>
   <div class="food-table">
     <tr>
       <table class="table table-striped table-bordered">
@@ -23,5 +35,6 @@
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="main.bundle.js"></script>
+  <script src="./lib/food-form.js"></script>
 </body>
 </html>

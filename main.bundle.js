@@ -42,11 +42,31 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var tables = __webpack_require__(1);
+
+	tables();
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
-	// var tables = require('./tables');
-	//
-	// tables();
+	$(document).ready(function () {
+	  var api = "https://fierce-savannah-17132.herokuapp.com/api/v1/foods";
+
+	  $.getJSON(api, function (data) {
+	    var foods = [];
+
+	    $.each(data, function (key, val) {
+	      foods.push("<tr><td id='tbl-name " + key + "'>" + val['name'] + "</td><td id='tbl-cal " + key + "'>" + val['calories'] + "</td></tr>");
+	    });
+
+	    foods.forEach(function (food) {
+	      $(".table-body").append(food);
+	    });
+	  });
+	});
 
 /***/ })
 /******/ ]);
