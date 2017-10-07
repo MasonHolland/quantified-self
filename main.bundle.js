@@ -45,8 +45,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	var tables = __webpack_require__(1);
+	var foodForm = __webpack_require__(2);
 
 	tables();
+	foodForm();
 
 /***/ }),
 /* 1 */
@@ -59,12 +61,40 @@
 	    var foods = [];
 
 	    $.each(data, function (key, val) {
-	      foods.push("<tr><td id='tbl-name " + key + "'>" + val['name'] + "</td><td id='tbl-cal " + key + "'>" + val['calories'] + "</td></tr>");
+	      foods.push("<tr class='table-row'><td id='tbl-name " + key + "'>" + val['name'] + "</td><td id='tbl-cal " + key + "'>" + val['calories'] + "</td><td><button type='button' class='delete-food " + key + "'>Delete</button></td></tr>");
 	    });
 
 	    foods.forEach(function (food) {
 	      $(".table-body").append(food);
 	    });
+	  });
+	});
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+	$(document).ready(function () {
+	  var $foodForm = $('.food-form');
+
+	  $foodForm.hide();
+
+	  $('#new-food').on("click", function (event) {
+	    $foodForm.show();
+	  });
+
+	  $foodForm.on("submit", function (event) {
+	    var api = "https://fierce-savannah-17132.herokuapp.com/api/v1/foods";
+	    var name = $(".name").val();
+	    var calories = $(".calories").val();
+	    $.post(api, { food: {
+	        name: name,
+	        calories: calories
+	      } });
+	    $foodForm.hide();
+	    $('.table-body').load();
+
+	    event.preventDefault();
 	  });
 	});
 
