@@ -9,15 +9,16 @@
   <div class="food-form">
     <form class='new-form'>
       Name:
-      <input type='text' name='name' class='name'>
+      <input type='text' name='name' class='new-food-name'>
       <br>
       Calories:
-      <input type='text' name='calories' class='calories'>
+      <input type='text' name='calories' class='new-food-calories'>
       <br>
       <input type='submit'>
     </form>
   </div>
   <div class="food-table">
+    <input type="text" name="food-search" value="Search Foods" id='food-search'>
     <tr>
       <table class="table table-striped table-bordered">
         <thead>
@@ -28,13 +29,11 @@
           </tr>
         </thead class="table-head">
           <tbody class="table-body">
-
           </tbody>
       </table>
     </tr>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="main.bundle.js"></script>
-  <script src="./lib/food-form.js"></script>
 </body>
 </html>
