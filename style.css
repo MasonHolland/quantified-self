@@ -1,0 +1,152 @@
+body {
+  font-family: sans-serif;
+}
+
+/*nav bar*/
+.navbar {
+  text-align: center;
+  color: DodgerBlue ;
+}
+
+.index-nav-foods {
+  font-size: 25px;
+  font-family: monospace;
+  display: inline
+}
+
+.index-nav-meals {
+  font-size: 35px;
+  font-family: monospace;
+  display: inline
+}
+
+.nav-foods {
+  font-size: 35px;
+  font-family: monospace;
+  text-align: right;
+  display: inline
+
+}
+
+.nav-meals {
+  font-size: 25px;
+  font-family: monospace;
+  display: inline;
+}
+
+.divider {
+  display: inline;
+}
+/*table styling*/
+
+.meal-tables {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 10px;
+}
+
+.meal-table {
+  width: 25%;
+}
+
+.table {
+  margin: 2px;
+}
+
+.meal-table-header {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+}
+
+.meal-table-title {
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  color: DodgerBlue;
+}
+
+.table-name {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.table-cal {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/*food table*/
+
+.food-table {
+  text-align: center;
+}
+
+.food-table-header {
+  font-family: monospace;
+  font-size: 2em;
+}
+
+.btn {
+  background-color: CornflowerBlue;
+  font-family: monospace;
+  font-size: 1em;
+  color: white;
+}
+
+.food-search-bar {
+  margin-top: 10px;
+  width: 15%;
+  text-align: center;
+}
+
+.food-meal-table {
+  margin-top: 10px;
+}
+
+.food-meal-table-header {
+  font-family: monospace;
+  font-size: 1.5em;
+  padding-left: 5px;
+}
+
+
+/*food page*/
+
+.food-page-container {
+  text-align: center;
+  display: grid;
+}
+
+.food-page-table {
+  margin-left: 42%;
+}
+
+.food-page-table-header {
+  font-family: monospace;
+  font-size: 1.5em;
+  padding-left: 5px;
+}
+
+.new-food-button {
+  margin: auto;
+}
+
+.food-form {
+  text-align: center;
+}
+
+.small-divider {
+  padding-left: 35%;
+  width: 30%;
+}
