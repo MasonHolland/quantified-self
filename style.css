@@ -94,11 +94,14 @@ body {
 
 .meal-cals-header {
   background: silver;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .meal-cals-val {
   background-color: silver;
-  text-align: center;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .rem-meal-cals {
@@ -158,12 +161,14 @@ body {
 
 .food-page-table {
   margin-left: 42%;
+  border: none;
 }
 
 .food-page-table-header {
   font-family: monospace;
   font-size: 1.5em;
   padding-left: 5px;
+  background: grey;
 }
 
 .new-food-button {
