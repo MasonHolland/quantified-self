@@ -10779,7 +10779,7 @@
 	    });
 	    currentMeal.html = HTMLHelper.totalMealCalories(currentMeal);
 	  });
-	  allMeals.forEach(function (meal) {
+	  meals.forEach(function (meal) {
 	    $('.' + meal.name + '-tfoot').append(meal.html);
 	    debugger;
 	    Meal.remainingCaloriesColorChecker(meal.remainingCalories, meal.name);
