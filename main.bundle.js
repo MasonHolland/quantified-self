@@ -10832,7 +10832,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	const $ = __webpack_require__(1);
-	const api = "https://fierce-savannah-17132.herokuapp.com/api/v1/meals";
+	const api = "https://fast-thicket-80204.herokuapp.com/api/v1/meals";
 	const Food = __webpack_require__(3);
 	const ajaxRequests = __webpack_require__(5);
 
