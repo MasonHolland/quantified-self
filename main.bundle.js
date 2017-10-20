@@ -10829,6 +10829,7 @@
 	  var remaining = 2000 - consumed;
 	  HTMLRunner.populateTotalCaloriesTableValues(consumed, remaining);
 	}
+	//
 
 /***/ }),
 /* 9 */
