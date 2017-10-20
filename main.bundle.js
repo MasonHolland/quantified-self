@@ -10330,6 +10330,7 @@
 	const FoodRunner = __webpack_require__(7);
 	const MealEvents = __webpack_require__(8);
 	const Meals = __webpack_require__(9);
+	const HTMLRunner = __webpack_require__(7);
 
 	var allFoods;
 	var counter = 2;
