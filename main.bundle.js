@@ -10507,7 +10507,7 @@
 /* 4 */
 /***/ (function(module, exports) {
 
-	const apiUrl = 'https://fast-thicket-80204.herokuapp.com/';
+	const apiUrl = 'https://fast-thicket-80204.herokuapp.com/api/v1';
 
 	module.exports = apiUrl;
 
