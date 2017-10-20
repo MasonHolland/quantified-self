@@ -1,0 +1,233 @@
+body {
+  font-family: sans-serif;
+}
+
+/*nav bar*/
+.navbar {
+  text-align: center;
+  color: DodgerBlue ;
+}
+
+.index-nav-foods {
+  font-size: 25px;
+  font-family: monospace;
+  display: inline
+}
+
+.index-nav-meals {
+  font-size: 35px;
+  font-family: monospace;
+  display: inline
+}
+
+.nav-foods {
+  font-size: 35px;
+  font-family: monospace;
+  text-align: right;
+  display: inline
+
+}
+
+.nav-meals {
+  font-size: 25px;
+  font-family: monospace;
+  display: inline;
+}
+
+.divider {
+  display: inline;
+}
+/*table styling*/
+
+.meal-tables {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 10px;
+}
+
+.meal-table {
+  width: 25%;
+  border: none;
+}
+
+.table {
+  margin: 2px;
+}
+
+.meal-table-header {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+  background: grey;
+}
+
+.meal-table-title {
+  font-family: monospace;
+  font-size: 2em;
+  text-align: center;
+  color: DodgerBlue;
+}
+
+.table-name {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.table-cal {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.delete-button {
+  border: none;
+}
+
+.meal-cals-header {
+  background: silver;
+  text-align: right;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.meal-cals-val {
+  background-color: silver;
+  text-align: right;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.rem-meal-cals {
+  color: green;
+  font-weight: bold;
+}
+
+/*totals table */
+
+.totals-table-title {
+  text-align: center;
+  font-size: 2em;
+  color: DodgerBlue;
+  font-family: monospace;
+}
+
+.totals-table {
+  display: table;
+  text-align: center;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  border-bottom: 10px;
+  background-color: silver;
+}
+
+.totals-table-header {
+  padding: 10px;
+}
+
+.totals-table-value {
+  padding: 10px;
+}
+
+.total-remaing-calories-val {
+  color: red;
+}
+
+/*food table*/
+
+.food-table {
+  text-align: center;
+}
+
+.food-table-header {
+  font-family: monospace;
+  font-size: 2em;
+}
+
+.btn {
+  background-color: CornflowerBlue;
+  font-family: monospace;
+  font-size: 1em;
+  color: white;
+}
+
+.food-search-bar {
+  margin-top: 10px;
+  width: 15%;
+  text-align: center;
+}
+
+.food-meal-table {
+  margin-top: 10px;
+  border: none;
+}
+
+.food-meal-table-header {
+  font-family: monospace;
+  font-size: 1.5em;
+  padding-left: 5px;
+  background: grey;
+}
+
+.table-actions {
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+
+/*food page*/
+
+.food-page-container {
+  text-align: center;
+  display: grid;
+}
+
+.food-page-table {
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+.food-page-table-header {
+  font-family: monospace;
+  font-size: 1.5em;
+  padding-left: 5px;
+  background: grey;
+}
+
+.add-new-food-button {
+  display: grid;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.add-new-food-form {
+  margin-top: 10px;
+}
+
+.food-form {
+  text-align: center;
+}
+
+.small-divider {
+  padding-left: 35%;
+  width: 30%;
+}
+
+.food-page-calorie-header {
+  padding-left: 5px;
+  padding-right: 5px;
+}

@@ -17,21 +17,36 @@
       <input type='submit'>
     </form>
   </div>
-  <div class="food-table">
-    <input type="text" name="food-search" value="Search Foods" id='food-search'>
-    <tr>
-      <table class="table table-striped table-bordered">
+  <hr />
+  <div class="food-page-container">
+    <div class="food-table">
+      <input class='food-search-bar' type="text" name="food-search" value="Search Foods" id='food-search'>
+      <div class='small-divider'><hr></div>
+      <table class="table table-striped table-bordered food-page-table" border="1" align="center";>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Calories</th>
+            <th class='food-page-table-header'>Name</th>
+            <th class='food-page-table-header food-page-calorie-header'>Calories</th>
             <th class="table-actions"></th>
           </tr>
         </thead class="food-table-head">
           <tbody class="food-table-body">
           </tbody>
       </table>
-    </tr>
+    </div>
+    <hr />
+    <input  class='btn add-new-food-button' type="button" name="Add New Food" value="Add New Food" id='new-food'>
+    <div class="food-form">
+      <form class='new-form'>
+        Name:
+        <input type='text' name='name' class='new-food-name'>
+        <br>
+        Calories:
+        <input type='text' name='calories' class='new-food-calories'>
+        <br>
+        <input type='submit'>
+      </form>
+    </div>
   </div>
   <script src="main.bundle.js"></script>
 </body>
