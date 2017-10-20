@@ -207,8 +207,15 @@ body {
   background: grey;
 }
 
-.new-food-button {
-  margin: auto;
+.add-new-food-button {
+  display: grid;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.add-new-food-form {
+  margin-top: 10px;
 }
 
 .food-form {
@@ -218,4 +225,9 @@ body {
 .small-divider {
   padding-left: 35%;
   width: 30%;
+}
+
+.food-page-calorie-header {
+  padding-left: 5px;
+  padding-right: 5px;
 }
