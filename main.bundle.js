@@ -10781,6 +10781,7 @@
 	  });
 	  allMeals.forEach(function (meal) {
 	    $('.' + meal.name + '-tfoot').append(meal.html);
+	    debugger;
 	    Meal.remainingCaloriesColorChecker(meal.remainingCalories, meal.name);
 	  });
 	}
@@ -10882,6 +10883,7 @@
 	  }
 
 	  static remainingCaloriesColorChecker(remValue, meal) {
+	    console.log(meal);
 	    if (remValue < 0) {
 	      $(`.${meal}-remaining-calories`)[0].style.color = "red";
 	    } else {
