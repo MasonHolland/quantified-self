@@ -10320,7 +10320,7 @@
 	const Food = __webpack_require__(3);
 	const $newFoodForm = $('.food-form');
 	const $foodTable = $('.food-table-body');
-	const ajaxRequests = __webpack_require__(5);
+	const AjaxRequests = __webpack_require__(5);
 	const HTMLHelper = __webpack_require__(6);
 	const $newFood = $('#new-food');
 	const $foodSearch = $('#food-search');
@@ -10476,7 +10476,7 @@
 
 	const $ = __webpack_require__(1);
 	const apiUrl = __webpack_require__(4);
-	const ajaxRequests = __webpack_require__(5);
+	const AjaxRequests = __webpack_require__(5);
 
 	class Food {
 	  constructor(data) {
@@ -10485,18 +10485,18 @@
 	    this.calories = data.calories;
 	  }
 	  static requestAllFood() {
-	    return ajaxRequests.requestAllFood();
+	    return AjaxRequests.requestAllFood();
 	  }
 
 	  static addFood(name, calories) {
 	    return new Promise(resolve => {
-	      resolve(ajaxRequests.addFood(name, calories));
+	      resolve(AjaxRequests.addFood(name, calories));
 	    });
 	  }
 
 	  static deleteFood(id) {
 	    return new Promise(resolve => {
-	      resolve(ajaxRequests.deleteFood(id));
+	      resolve(AjaxRequests.deleteFood(id));
 	    });
 	  }
 	};
@@ -10507,7 +10507,7 @@
 /* 4 */
 /***/ (function(module, exports) {
 
-	const apiUrl = 'https://fierce-savannah-17132.herokuapp.com/api/v1';
+	const apiUrl = 'https://fast-thicket-80204.herokuapp.com/';
 
 	module.exports = apiUrl;
 
@@ -10519,7 +10519,7 @@
 	const Food = __webpack_require__(3);
 	const apiUrl = __webpack_require__(4);
 
-	class ajaxRequests {
+	class AjaxRequests {
 	  static requestAllFood() {
 	    return $.getJSON(`${apiUrl}/foods`, data => {
 	      return data;
@@ -10561,7 +10561,7 @@
 	  }
 	}
 
-	module.exports = ajaxRequests;
+	module.exports = AjaxRequests;
 
 /***/ }),
 /* 6 */
@@ -10834,7 +10834,7 @@
 	const $ = __webpack_require__(1);
 	const api = "https://fast-thicket-80204.herokuapp.com/api/v1/meals";
 	const Food = __webpack_require__(3);
-	const ajaxRequests = __webpack_require__(5);
+	const AjaxRequests = __webpack_require__(5);
 
 	class Meal {
 	  constructor(data) {
@@ -10898,7 +10898,7 @@
 	function newFoods(foods) {
 	  mealFoods = [];
 	  foods.forEach(function (key, val) {
-	    if (ajaxRequests.foodExsists(key.id)) {
+	    if (AjaxRequests.foodExsists(key.id)) {
 	      mealFoods.push(new Food(key));
 	    } else {}
 	  });
