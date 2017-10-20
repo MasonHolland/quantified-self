@@ -10595,6 +10595,8 @@
 	            </thead class='${val.name}-thead meal-table-head'>
 	          <tbody class='${val.name}-tbody ${val.id} meal-table-body'>
 	          </tbody>
+	          <tfoot class=''${val.name}-tfoot}'>
+	          </tfoot>
 	        </table>
 	      </tr>
 	    </div>
