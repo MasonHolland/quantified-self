@@ -10318,19 +10318,18 @@
 
 	const $ = __webpack_require__(1);
 	const Food = __webpack_require__(3);
+	const AjaxRequests = __webpack_require__(5);
 	const $newFoodForm = $('.food-form');
 	const $foodTable = $('.food-table-body');
-	const AjaxRequests = __webpack_require__(5);
 	const HTMLHelper = __webpack_require__(6);
 	const $newFood = $('#new-food');
 	const $foodSearch = $('#food-search');
 	const $newFoodName = $('.new-food-name');
 	const $newFoodCalories = $('.new-food-calories');
 	const apiUrl = __webpack_require__(4);
-	const FoodRunner = __webpack_require__(7);
+	const HTMLRunner = __webpack_require__(7);
 	const MealEvents = __webpack_require__(8);
 	const Meals = __webpack_require__(9);
-	const HTMLRunner = __webpack_require__(7);
 
 	var allFoods;
 	var counter = 2;
@@ -10344,7 +10343,6 @@
 	  HTMLRunner.formTable(allFoods, "food-table");
 	  HTMLRunner.formFoodMealTable(allFoods);
 	});
-
 	$newFoodForm.hide();
 
 	$(document).on('click', '.delete-food-food-table', function () {
@@ -10367,12 +10365,17 @@
 	$newFoodForm.on("submit", function (event) {
 	  var name = $(".new-food-name").val();
 	  var calories = $(".new-food-calories").val();
-	  $newFoodForm.hide();
-	  $newFood.show();
-	  Food.addFood(name, calories).then(function (data) {
-	    FoodRunner.refreshFoodTable();
-	  });
-	  event.preventDefault();
+	  if (name.length == 0 || calories.length == 0) {
+	    alert('Please ensure both fields have been filled out');
+	  } else {
+	    $newFoodForm.hide();
+	    $newFood.show();
+	    Food.addFood(name, calories).then(function (data) {
+	      HTMLRunner.refreshFoodTable();
+	    });
+	    $newFoodForm.reset();
+	    event.preventDefault();
+	  }
 	});
 
 	$foodSearch.on('keyup', function (event) {
@@ -10388,13 +10391,13 @@
 
 	$foodTable.on('click', '.table-name', function (event) {
 	  var id = $(this).attr("class").split(" ")[1];
-	  event.target.outerHTML = `<td><input type="text" class="edit-input ${id}"` + ` data-id=${id} value="${event.target.innerText}"></td>`;
+	  event.target.outerHTML = `<td><input type="text" class="edit-input-name ${id}"` + ` data-id=${id} value="${event.target.innerText}"></td>`;
 	  event.preventDefault();
 	});
 
 	$foodTable.on('click', '.table-cal', function (event) {
 	  var id = $(this).attr("class").split(" ")[1];
-	  event.target.outerHTML = `<td><input type="text" class="edit-input ${id}"` + ` data-id=${id} value="${event.target.innerText}"></td>`;
+	  event.target.outerHTML = `<td><input type="text" class="edit-input-cal ${id}"` + ` data-id=${id} value="${event.target.innerText}"></td>`;
 	  event.preventDefault();
 	});
 
@@ -10470,7 +10473,6 @@
 	  });
 	  return allFoods;
 	};
-	//
 
 /***/ }),
 /* 3 */
@@ -10479,12 +10481,14 @@
 	const $ = __webpack_require__(1);
 	const apiUrl = __webpack_require__(4);
 	const AjaxRequests = __webpack_require__(5);
+	let allFoods;
 
 	class Food {
 	  constructor(data) {
 	    this.id = data.id;
 	    this.name = data.name;
 	    this.calories = data.calories;
+	    this.allFoods = null;
 	  }
 	  static requestAllFood() {
 	    return AjaxRequests.requestAllFood();
@@ -10523,14 +10527,13 @@
 
 	class AjaxRequests {
 	  static requestAllFood() {
-	    return $.getJSON(`${apiUrl}/foods`, data => {
-	      return data;
-	    });
+	    return $.getJSON(`${apiUrl}/foods`);
 	  }
+
 	  static deleteFood(id) {
 	    return $.ajax({
 	      method: "DELETE",
-	      url: `${apiUrl}/foods/` + id
+	      url: `${apiUrl}/foods/${id}`
 	    });
 	  }
 
@@ -10542,17 +10545,29 @@
 	  }
 
 	  static addFood(name, calories) {
-	    $.post(apiUrl + "/foods", { food: {
+	    return $.post(`${apiUrl}/foods`, { food: {
 	        name: name,
 	        calories: calories
 	      } });
+	  }
+
+	  static addMealFood(mealID, foodID) {
+	    return $.post(apiUrl + "/meals/" + mealID + "/foods/" + foodID);
+	  }
+
+	  static updateFood(name, calories, id) {
+	    return $.ajax({
+	      method: "PATCH",
+	      url: apiUrl + "/foods/" + id,
+	      data: { food: { name: name, calories: calories } }
+	    });
 	  }
 
 	  static getIndFood(id) {
 	    return $.get(apiUrl + "/foods/" + id);
 	  }
 
-	  static foodExsists(key) {
+	  static foodExists(key) {
 	    var result = true;
 	    this.getIndFood(key).then(function (data) {
 	      result = true;
@@ -10560,6 +10575,16 @@
 	      result = false;
 	    });
 	    return result;
+	  }
+
+	  static deleteAllFoods(foodID) {
+	    for (var i = 1; i < 5; i++) {
+	      $.ajax({
+	        method: "DELETE",
+	        url: apiUrl + '/meals/' + i + '/foods/' + foodID
+	      });
+	    }
+	    return;
 	  }
 	}
 
@@ -10584,22 +10609,21 @@
 	    return `
 	      <div class='${val.name} 'meals-table>
 	      <tr>
-	        <table class='${val.name}-table table-striped table-bordered'>
+	        <table class='${val.name}-table table-striped table-bordered meal-table' border='1'>
 	          <thead>
-	            <h3>${val.name}</h3>
+	            <p class='meal-table-title'><strong>${val.name}</strong></p>
 	              <tr>
-	                <th>Name</th>
-	                <th>Calories</th>
+	                <th class='meal-table-header'>Name</th>
+	                <th class='meal-table-header'>Calories</th>
 	                <th class=table-actions></th>
 	              </tr>
 	            </thead class='${val.name}-thead meal-table-head'>
 	          <tbody class='${val.name}-tbody ${val.id} meal-table-body'>
 	          </tbody>
-	          <tfoot class=''${val.name}-tfoot}'>
+	          <tfoot class='${val.name}-tfoot meal-table-footer'
 	          </tfoot>
 	        </table>
 	      </tr>
-	    </div>
 	    `;
 	  }
 	  static newFoodMealTableEntry(val) {
@@ -10625,7 +10649,6 @@
 	      </tr>`;
 	  }
 	}
-
 	module.exports = HTMLHelper;
 
 /***/ }),
@@ -10781,7 +10804,7 @@
 	    });
 	    currentMeal.html = HTMLHelper.totalMealCalories(currentMeal);
 	  });
-	  meals.forEach(function (meal) {
+	  allMeals.forEach(function (meal) {
 	    $('.' + meal.name + '-tfoot').append(meal.html);
 	    Meal.remainingCaloriesColorChecker(meal.remainingCalories, meal.name);
 	  });
@@ -10830,19 +10853,19 @@
 	  var remaining = 2000 - consumed;
 	  HTMLRunner.populateTotalCaloriesTableValues(consumed, remaining);
 	}
-	//
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	const $ = __webpack_require__(1);
-	const api = "https://fast-thicket-80204.herokuapp.com/api/v1/meals";
+	const api = "https://fierce-savannah-17132.herokuapp.com/api/v1/meals";
 	const Food = __webpack_require__(3);
 	const AjaxRequests = __webpack_require__(5);
 
 	class Meal {
 	  constructor(data) {
+	    this.id = data.id;
 	    this.name = data.name;
 	    this.foods = newFoods(data.foods);
 	  }
@@ -10855,14 +10878,13 @@
 
 	  static deleteAllFoods(foodID) {
 	    return new Promise(resolve => {
-	      resolve(function () {
-	        for (var i = 1; i < 5; i++) {
-	          $.ajax({
-	            method: "DELETE",
-	            url: api + '/' + i + '/foods/' + foodID
-	          });
-	        }
-	      });
+	      resolve(AjaxRequests.deleteAllFoods(foodID));
+	    });
+	  }
+
+	  static addMealFood(mealID, foodID) {
+	    return new Promise(resolve => {
+	      resolve(AjaxRequests.addMealFood(mealID, foodID));
 	    });
 	  }
 
@@ -10885,7 +10907,6 @@
 	  }
 
 	  static remainingCaloriesColorChecker(remValue, meal) {
-	    debugger;
 	    if (remValue < 0) {
 	      $(`.${meal}-remaining-calories`)[0].style.color = "red";
 	    } else {
@@ -10904,7 +10925,7 @@
 	function newFoods(foods) {
 	  mealFoods = [];
 	  foods.forEach(function (key, val) {
-	    if (AjaxRequests.foodExsists(key.id)) {
+	    if (AjaxRequests.foodExists(key.id)) {
 	      mealFoods.push(new Food(key));
 	    } else {}
 	  });
