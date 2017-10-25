@@ -10606,6 +10606,7 @@
 	      </tr>`;
 	  }
 	  static newTableDiv(val) {
+	    debugger;
 	    return `
 	      <div class='${val.name} 'meals-table>
 	      <tr>
@@ -10754,11 +10755,13 @@
 
 	$(document).on('click', '.delete-food-meal-table', function () {
 	  let foodID = $(this).attr("class").split(" ")[1];
+	  debugger;
 	  let mealID = event.path[3].className.split(' ')[1];
+	  let mealName = event.path[3].className.split(' ')[0].split("-")[0];
 	  let parentElement = event.path[2].remove();
 
 	  Meal.deleteFood(mealID, foodID).then(function (data) {
-	    refreshCalories(mealID);
+	    refreshCalories(mealName);
 	  });
 	  event.preventDefault();
 	});
@@ -10815,7 +10818,7 @@
 	    var mealName = 'Breakfast';
 	    calculateNewTotalCalories(mealName);
 	    calculateNewRemainingCalories(mealName);
-	  } else if (meal == '2' || meal == 'Snack') {
+	  } else if (meal === '2' || meal == 'Snack') {
 	    var mealName = 'Snack';
 	    calculateNewTotalCalories(mealName);
 	    calculateNewRemainingCalories(mealName);
@@ -10859,7 +10862,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	const $ = __webpack_require__(1);
-	const api = "https://fierce-savannah-17132.herokuapp.com/api/v1/meals";
+	const api = "https://fast-thicket-80204.herokuapp.com/api/v1/meals";
 	const Food = __webpack_require__(3);
 	const AjaxRequests = __webpack_require__(5);
 
